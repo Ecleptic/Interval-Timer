@@ -23,13 +23,17 @@ function startTimer(inputTime) {
 /**
  * Get user input and start the timer
  */
-const timerInput = document.querySelector(".timerInput")
+const secondsInput = document.querySelector(".secondsInput")
+const minutesInput = document.querySelector(".minutesInput")
 const submitTimer = document
-  .querySelector(".submitTimer")
+  .querySelector(".submitTimer-form")
   .addEventListener("submit", e => {
     e.preventDefault()
     clearInterval(timer)
-    startTimer(parseInt(timerInput.value) + 1)
+    const timeInSeconds =
+      parseInt(secondsInput.value) + parseInt(minutesInput.value) * 60
+    console.log(timeInSeconds)
+    startTimer(parseInt(timeInSeconds) + 1)
   })
 
 /**
@@ -37,8 +41,17 @@ const submitTimer = document
  */
 
 function displayTimeLeft(time) {
-  const timerDiv = document.querySelector(".timer")
-  const timerDisplay = document.querySelector("#timerDisplay")
+  // const timerDiv = document.querySelector(".timer")
+  // const timerDisplay = document.querySelector("#timerDisplay")
+  const secondsInput = document.querySelector(".secondsInput")
+  const minutesInput = document.querySelector(".minutesInput")
 
-  timerDisplay.textContent = time
+  const minutesLeft = time / 60
+  const secondsLeft = time % 60
+
+  console.log("minutes: ", Math.round(minutesLeft))
+  console.log("seconds: ", Math.round(secondsLeft))
+
+  minutesInput.value = Math.floor(minutesLeft)
+  secondsInput.value = Math.floor(secondsLeft)
 }

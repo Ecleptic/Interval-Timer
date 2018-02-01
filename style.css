@@ -1,4 +1,70 @@
-body {
-  background: #5c005c;
-  color: white;
+:root {
+  --darkPurple: #292d3e;
+  --lightPurple: #7e57c2;
+}
+
+html {
+  box-sizing: border-box;
+  background: var(--darkPurple);
+  color: var(--lightPurple);
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.timerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 97vh;
+}
+.submitTimer {
+  border: solid 3px var(--lightPurple);
+  width: 55vw;
+  height: 55vw;
+  padding-top: 100%;
+  border-radius: 50%;
+  padding: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+.submitTimer-form,
+.incrementControls {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.incrementer {
+  border: solid 1px var(--lightPurple);
+  background: var(--darkPurple);
+  color: var(--lightPurple);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.timerColon {
+  flex: 0.5;
+}
+.timerInput {
+  background-color: var(--darkPurple);
+  color: var(--lightPurple);
+  border: solid 1px var(--darkPurple);
+  font-size: 3rem;
+  width: 40%;
+}
+
+.minutesInput {
+  text-align: end;
 }
