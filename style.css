@@ -1,12 +1,15 @@
 :root {
   --darkPurple: #292d3e;
   --lightPurple: #7e57c2;
+  --mainColor: var(--darkPurple);
+  --accentColor: var(--lightPurple);
+  --white: #ffffff;
 }
 
 html {
   box-sizing: border-box;
-  background: var(--darkPurple);
-  color: var(--lightPurple);
+  background: var(--mainColor);
+  color: var(--accentColor);
 }
 *,
 *:before,
@@ -19,9 +22,10 @@ html {
   justify-content: center;
   align-items: center;
   height: 97vh;
+  flex-direction: column;
 }
 .submitTimer {
-  border: solid 3px var(--lightPurple);
+  border: solid 3px var(--accentColor);
   width: 55vw;
   height: 55vw;
   padding-top: 100%;
@@ -31,7 +35,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-flow: column;
+  flex-direction: column;
 }
 .submitTimer-form,
 .incrementControls {
@@ -41,11 +45,10 @@ html {
   justify-content: space-between;
 }
 
-
 .incrementer {
-  border: solid 1px var(--lightPurple);
-  background: var(--darkPurple);
-  color: var(--lightPurple);
+  border: solid 1px var(--accentColor);
+  background: var(--mainColor);
+  color: var(--white);
   border-radius: 50%;
   height: 30px;
   width: 30px;
@@ -58,11 +61,20 @@ html {
   flex: 0.5;
 }
 .timerInput {
-  background-color: var(--darkPurple);
-  color: var(--lightPurple);
-  border: solid 1px var(--darkPurple);
+  background-color: var(--mainColor);
+  color: var(--white);
+  border: solid 1px var(--mainColor);
   font-size: 3rem;
   width: 40%;
+}
+.restTime {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+.restTime__input {
+  font-size: 1rem;
+  text-align: center;
 }
 
 .minutesInput {
