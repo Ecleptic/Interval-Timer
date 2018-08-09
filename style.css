@@ -3,7 +3,7 @@
   --lightPurple: #7e57c2;
   --mainColor: var(--darkPurple);
   --accentColor: var(--lightPurple);
-  --white: #ffffff;
+  --white: #e2e2e2;
 }
 
 html {
@@ -17,6 +17,7 @@ html {
   box-sizing: inherit;
 }
 
+/* Block_Element-Modifier */
 .timerContainer {
   display: flex;
   justify-content: center;

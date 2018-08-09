@@ -90,6 +90,7 @@ function displayTimeLeft(time) {
 document.querySelectorAll(".incrementer").forEach(e => {
   document.addEventListener("click", incrementTime)
 })
+
 function incrementTime(e) {
   // const secondsInput = document.querySelector(".secondsInput")
   // const minutesInput = document.querySelector(".minutesInput")
