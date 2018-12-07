@@ -25,6 +25,7 @@
 }
 
 html {
+    touch-action: manipulation;
     box-sizing: border-box;
     background: var(--mainColor);
     color: var(--accentColor);
