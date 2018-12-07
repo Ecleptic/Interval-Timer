@@ -1,83 +1,212 @@
+/* prettier-ignore */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100);
+
 :root {
-  --darkPurple: #292d3e;
-  --lightPurple: #7e57c2;
-  --mainColor: var(--darkPurple);
-  --accentColor: var(--lightPurple);
-  --white: #e2e2e2;
+    --textLight: #e2e2e2;
+    --textDark: #131516;
+
+    --darkPurple: #292d3e;
+    --lightPurple: #7e57c2;
+
+    --sLightAccent: #dfdcec;
+    --sLightMain: #268bd2;
+
+    --pinkWhiteAccent: #fe3562;
+    --pinkWhiteMain: #dfdcec;
+
+    --transparentColor: #ffffff00;
+
+    --mainColor: var(--darkPurple);
+    --accentColor: var(--lightPurple);
+    --textColor: var(--textLight);
+
+    --timerSize: 320px;
+    --incrementerSize: 50px;
 }
 
 html {
-  box-sizing: border-box;
-  background: var(--mainColor);
-  color: var(--accentColor);
+    box-sizing: border-box;
+    background: var(--mainColor);
+    color: var(--accentColor);
+    font-family: 'Roboto', sans-serif;
 }
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+.timerInput {
+    background: none;
+    color: var(--textColor);
+    border: none;
+    font-size: 79px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+.minutesInput {
+    width: 45%;
+}
+.secondsInput {
+    width: 45%;
 }
 
 /* Block_Element-Modifier */
-.timerContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 97vh;
-  flex-direction: column;
-}
-.submitTimer {
-  border: solid 3px var(--accentColor);
-  width: 55vw;
-  height: 55vw;
-  padding-top: 100%;
-  border-radius: 50%;
-  padding: 2rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.submitTimer-form,
-.incrementControls {
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.pageContainer {
+    display: grid;
+    justify-items: center; /* center on x|x */
+    align-items: center;
+    height: 100vh;
+    grid-template-columns: 1fr 70% 1fr;
+    grid-template-rows: 1fr 50% 1fr 1fr;
+    grid-template-areas:
+        'Theme    .     Help'
+        'Main    Main   Main'
+        'Reps    Reps   Reps'
+        'Reset   Reset  Reset';
 }
 
-.incrementer {
-  border: solid 1px var(--accentColor);
-  background: var(--mainColor);
-  color: var(--white);
-  border-radius: 50%;
-  height: 30px;
-  width: 30px;
-  text-align: center;
-  padding: 0;
-  margin-top: 10px;
+.themeSelector {
+    grid-area: Theme;
+}
+.helpSelector {
+    grid-area: Help;
 }
 
-.timerColon {
-  flex: 0.5;
+.submitTimer-form {
+    grid-area: Time;
+    display: flex;
+    justify-content: center;
+    /*   width:50%; */
 }
-.timerInput {
-  background-color: var(--mainColor);
-  color: var(--white);
-  border: solid 1px var(--mainColor);
-  font-size: 3rem;
-  width: 40%;
+.incrementControls_button-left {
+    grid-area: Increment-Left;
 }
-.restTime {
-  display: flex;
-  justify-content: center;
-  padding-top: 2rem;
+.incrementControls_button-right {
+    grid-area: Increment-Right;
 }
-.restTime__input {
-  font-size: 1rem;
-  text-align: center;
+
+.timerControl {
+    grid-area: Play;
 }
 
 .minutesInput {
-  text-align: end;
+    text-align: end;
+    justify-items: stretch;
+}
+
+.restTime__secondsInput {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.timerContainer {
+    grid-area: Main;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-items: center; /* center on x|x */
+    align-items: center;
+    justify-content: space-around;
+    /*   justify-content: center; */
+
+    border: solid 10px var(--accentColor);
+    border-radius: 50%;
+    width: var(--timerSize);
+    height: var(--timerSize);
+}
+
+.incrementControls_container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.restTimerInput {
+    /*   font-size: 3rem; */
+    color: var(--textColor);
+    background: none;
+    border: none;
+    font-size: 1rem;
+}
+.restTime {
+    grid-area: Rest;
+    display: flex;
+    text-align: center;
+    font-size: 25px;
+    justify-content: center;
+}
+
+.incrementer {
+    border: solid 1px var(--accentColor);
+    background: none;
+    /* font-size: 25px; */
+    fill: var(--textColor);
+    border-radius: 50%;
+    height: var(--incrementerSize);
+    width: var(--incrementerSize);
+    padding: 15px;
+    /* line-height: var(--incrementerSize); */
+    /* text-align: center; */
+}
+.incrementer > * {
+    pointer-events: none;
+}
+
+.timerControl__button {
+    width: 75px;
+    height: 75px;
+    /* background: var(--primaryColor); */
+    background: none;
+    border-radius: 50%;
+    border: solid 3px var(--accentColor);
+    fill: var(--accentColor);
+}
+
+.themeSwitcher {
+    grid-area: Theme;
+    width: calc(var(--timerSize) / 4);
+    display: flex;
+    align-items: center;
+    color: var(--accentColor);
+    padding: 10px 0px 10px 0px;
+}
+
+.changeTheme {
+    /*     transform: rotate(-45deg); */
+    fill: var(--accentColor);
+    background: none;
+    border: none;
+    padding: 0;
+}
+.reps {
+    grid-area: Reps;
+    height: 57px;
+    font-size: 48px;
+    display: flex;
+    align-items: baseline;
+}
+.repsInput {
+    font-size: 48px;
+    background: none;
+    border: none;
+    color: var(--textColor);
+}
+.repsInput_Number {
+    text-align: right;
+    width: 50%;
+    /* font-size: 1rem; */
+}
+.repsInput_Times {
+    font-size: 30px;
+}
+.reset {
+    grid-area: Reset;
+}
+.reset > button {
+    color: var(--textColor);
+    font-size: 25px;
+    background: none;
+    border: none;
 }
