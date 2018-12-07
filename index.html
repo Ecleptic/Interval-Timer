@@ -1,44 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Interval Timer</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Interval Timer</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div class="timerContainer">
-        <div class="submitTimer">
-            <form class="submitTimer-form">
-                <input class="timerInput minutesInput" type="text" value="1">
-                <span class="timerInput timerColon">:</span>
-                <input class="timerInput secondsInput" type="text" value="10">
-                <button type="submit" hidden>submit</button>
-            </form>
-            <div class="incrementControls">
-                <div class="incrementControls_button">
-                    <button class="incrementer " id="increment__minutes-up">+</button>
-                    <button class="incrementer " id="increment__minutes-down">-</button>
+    <body>
+        <div class="timerContainer">
+            <div class="submitTimer">
+                <form class="submitTimer-form">
+                    <input
+                        class="timerInput minutesInput"
+                        type="text"
+                        value="01"
+                    />
+                    <span class="timerInput timerColon">:</span>
+                    <input
+                        class="timerInput secondsInput"
+                        type="text"
+                        value="10"
+                    />
+                    <button type="submit" hidden>submit</button>
+                </form>
+                <div class="incrementControls">
+                    <div class="incrementControls_button">
+                        <button class="incrementer " id="increment__minutes-up">
+                            +
+                        </button>
+                        <button
+                            class="incrementer "
+                            id="increment__minutes-down"
+                        >
+                            -
+                        </button>
+                    </div>
+                    <!-- <span class=""> </span> -->
+                    <div class="incrementControls_button">
+                        <button class="incrementer " id="increment__seconds-up">
+                            +
+                        </button>
+                        <button
+                            class="incrementer "
+                            id="increment__seconds-down"
+                        >
+                            -
+                        </button>
+                    </div>
                 </div>
-                <span class=""> </span>
-                <div class="incrementControls_button">
-                    <button class="incrementer " id="increment__seconds-up">+</button>
-                    <button class="incrementer " id="increment__seconds-down">-</button>
+                <div class="restTime">
+                    <input
+                        type="text"
+                        class="timerInput restTime__input"
+                        value="30"
+                    />
                 </div>
+                <button class="timerControl__button paused" id="startButton">
+                    start
+                </button>
+                <!--
+                    <div class="timerControl">
+                    </div>
+                -->
             </div>
-            <div class="restTime">
-                <input type="text" class="timerInput restTime__input" value="30">
-            </div>
-        </div>
-        <div class="timerControl">
+            <input type="text" class="timerInput repsInput" value="2" />
             <button class="timerControl__button" id="stopButton">stop</button>
-            <button class="timerControl__button paused" id="startButton">start</button>
         </div>
-    </div>
-</body>
-<script src="index.js"></script>
-
+    </body>
+    <script src="index.js"></script>
 </html>
