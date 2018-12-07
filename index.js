@@ -32,16 +32,29 @@ startButton.addEventListener('click', () => {
     if (!isRunning) {
         clearInterval(timer)
         const timeInSeconds =
-            parseInt(secondsInput.value) + parseInt(minutesInput.value) * 60
+        parseInt(secondsInput.value) + parseInt(minutesInput.value) * 60
         startTimer(parseInt(timeInSeconds) + 1)
+        transformPlay()
     } else {
         clearInterval(timer)
+
         // minutesInput.value = defaultMinutesValue
         // secondsInput.value = defaultSecondsValue
         isRunning = false
+        transformPlay()
+
         // secondsInput.value = "00"
         // minutesInput.value = "0"
     }
+})
+
+const resetButton = document.querySelector('#resetButton')
+resetButton.addEventListener('click', () => {
+    clearInterval(timer)
+    isRunning = false
+    transformPlay()
+    minutesInput.value = defaultMinutesValue
+    secondsInput.value = defaultSecondsValue
 })
 // document.querySelector('#stopButton').addEventListener('click', () => {
 //     clearInterval(timer)
@@ -77,6 +90,7 @@ const submitTimer = document
     .addEventListener('submit', e => {
         e.preventDefault()
         clearInterval(timer)
+        isRunning = true
         const timeInSeconds =
             parseInt(secondsInput.value) + parseInt(minutesInput.value) * 60
         console.log({ timeInSeconds })
@@ -174,20 +188,22 @@ function incrementTime(e) {
     }
 }
 
-let flip = isRunning
-let pause = 'M11,10 L18,13.74 18,22.28 11,26 M18,13.74 L26,18 26,18 18,22.28'
-let play = 'M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26'
-let svg_animation = document.querySelector('#animation')
+// document
+//     .querySelector('.timerControl__button')
+//     .addEventListener('click', transformPlay)
 
-document
-    .querySelector('.timerControl__button')
-    .addEventListener('click', () => {
-        flip = !flip
-        svg_animation.setAttribute('to', flip ? play : pause)
-        svg_animation.setAttribute('from', flip ? play : pause)
-        svg_animation.beginElement()
-    })
+function transformPlay() {
+    console.log('transforming', isRunning)
+    const svg_animation = document.querySelector('#animation')
+    const pause =
+        'M11,10 L18,13.74 18,22.28 11,26 M18,13.74 L26,18 26,18 18,22.28'
+    const play = 'M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26'
 
+    // isRunning = !isRunning
+    svg_animation.setAttribute('to', isRunning ? play : pause)
+    svg_animation.setAttribute('from', isRunning ? play : pause)
+    svg_animation.beginElement()
+}
 document.querySelector('#themeUp').addEventListener('click', changeThemeUp)
 document.querySelector('#themeDown').addEventListener('click', changeThemeDown)
 
