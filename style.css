@@ -43,6 +43,7 @@ html {
     font-size: 79px;
     justify-content: center;
     position: relative;
+    padding: 0;
     z-index: 1;
 }
 .minutesInput {
@@ -59,9 +60,9 @@ html {
     align-items: center;
     height: 100vh;
     grid-template-columns: 1fr 70% 1fr;
-    grid-template-rows: 1fr 50% 1fr 1fr;
+    grid-template-rows: 1fr 50% 1fr 1fr 1fr; /* Added the last FR to give some nice bottom padding and fitting "Reset" on the page*/
     grid-template-areas:
-        'Theme    .     Help'
+        '.       Theme  Help'
         'Main    Main   Main'
         'Reps    Reps   Reps'
         'Reset   Reset  Reset';
@@ -124,7 +125,7 @@ html {
 }
 
 .restTimerInput {
-    /*   font-size: 3rem; */
+    padding: 0;
     color: var(--textColor);
     background: none;
     border: none;
@@ -188,6 +189,7 @@ html {
     align-items: baseline;
 }
 .repsInput {
+    padding: 0;
     font-size: 48px;
     background: none;
     border: none;
