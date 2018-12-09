@@ -107,7 +107,7 @@ function startTimer(inputTime, restInSeconds) {
         if (timeLeft >= 0) {
             displayTimeLeft(timeLeft)
         } else {
-            if (restInSeconds > 0 || currentRepsValue > 0) {
+            if (currentRepsValue > 0) {
                 const restLeft = Math.round(restGoal - Date.now()) / 1000
                 displayRestLeft(restLeft)
                 if (restLeft <= 0 && currentRepsValue >= 0) {
