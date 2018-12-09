@@ -2,12 +2,24 @@
 
 // Made the timer Global. May want to look into another way.
 let timer
+let isReset = true
 let isRunning = false
 let darkMode = false
 let currentTheme = 0
 
-const defaultMinutesValue = '01'
-const defaultSecondsValue = '10'
+// let defaultMinutesValue = '01'
+// let defaultSecondsValue = '10'
+
+let savedMinutesValue
+let savedSecondsValue
+let saveRestMinutesValue
+let saveRestSecondsValue
+let savedRepsValue
+let currentMinutesValue
+let currentSecondsValue
+let currentRestMinutesValue
+let currentRestSecondsValue
+let currentRepsValue
 
 const themeList = [
     { main: 'darkPurple', accent: 'lightPurple', text: 'textLight' },
@@ -19,8 +31,12 @@ const themeList = [
     { main: 'pinkWhiteMain', accent: 'pinkWhiteAccent', text: 'textDark' }
 ]
 
-const minutesInput = document.querySelector('.minutesInput')
-const secondsInput = document.querySelector('.secondsInput') //TODO: maybe not global var?
+const minutesInput = document.querySelector('#timerInputMinutes')
+const secondsInput = document.querySelector('#timerInputSeconds')
+const restTimerInputMinutes = document.querySelector('#restTimerInputMinutes')
+const restTimerInputSeconds = document.querySelector('#restTimerInputSeconds')
+const repsInput = document.querySelector('#repsInput')
+
 /**
  * Listen to start button.
  * If clicked while it's class is "running", then we pause and change class
@@ -30,21 +46,20 @@ const secondsInput = document.querySelector('.secondsInput') //TODO: maybe not g
 const startButton = document.querySelector('#startButton')
 startButton.addEventListener('click', () => {
     if (!isRunning) {
+        // start
         clearInterval(timer)
         const timeInSeconds =
-        parseInt(secondsInput.value) + parseInt(minutesInput.value) * 60
-        startTimer(parseInt(timeInSeconds) + 1)
+            parseInt(secondsInput.value) + parseInt(minutesInput.value) * 60
+        const restInSeconds =
+            parseInt(restTimerInputSeconds.value) +
+            parseInt(restTimerInputMinutes.value) * 60
+        startTimer(parseInt(timeInSeconds), parseInt(restInSeconds))
         transformPlay()
     } else {
+        // pause
         clearInterval(timer)
-
-        // minutesInput.value = defaultMinutesValue
-        // secondsInput.value = defaultSecondsValue
         isRunning = false
         transformPlay()
-
-        // secondsInput.value = "00"
-        // minutesInput.value = "0"
     }
 })
 
@@ -52,32 +67,63 @@ const resetButton = document.querySelector('#resetButton')
 resetButton.addEventListener('click', () => {
     clearInterval(timer)
     isRunning = false
+    isReset = true
     transformPlay()
-    minutesInput.value = defaultMinutesValue
-    secondsInput.value = defaultSecondsValue
+    minutesInput.value = savedMinutesValue || '00'
+    secondsInput.value = savedSecondsValue || '00'
+    restTimerInputMinutes.value = saveRestMinutesValue || '00'
+    restTimerInputSeconds.value = saveRestSecondsValue || '00'
+    repsInput.value = savedRepsValue || '1'
 })
-// document.querySelector('#stopButton').addEventListener('click', () => {
-//     clearInterval(timer)
-//     // secondsInput.value = "00"
-//     // minutesInput.value = "0"
-// })
 
 /**
  * Function that begins and holds the countdown.
  * @param {Integer} inputTime
  */
-function startTimer(inputTime) {
+function startTimer(inputTime, restInSeconds) {
     const currentTime = Date.now()
     const goalTime = currentTime + inputTime * 1000
-    isRunning = true
+    const restGoal = goalTime + (restInSeconds + 1) * 1000
 
+    // save the other pieces.
+    if (isReset) {
+        savedMinutesValue = minutesInput.value
+        currentMinutesValue = minutesInput.value
+        savedSecondsValue = secondsInput.value
+        currentSecondsValue = secondsInput.value
+        saveRestMinutesValue = restTimerInputMinutes.value
+        currentRestMinutesValue = restTimerInputMinutes.value
+        saveRestSecondsValue = restTimerInputSeconds.value
+        currentRestSecondsValue = restTimerInputSeconds.value
+        savedRepsValue = repsInput.value
+        currentRepsValue = repsInput.value
+    }
+
+    isRunning = true
+    isReset = false
     timer = setInterval(() => {
         let timeLeft = Math.round((goalTime - Date.now()) / 1000)
-        // console.log(timeLeft)
-        displayTimeLeft(timeLeft)
-        if (timeLeft <= 0) {
-            clearInterval(timer)
-            isRunning = false
+
+        if (timeLeft >= 0) {
+            displayTimeLeft(timeLeft)
+        } else {
+            if (restInSeconds > 0 || currentRepsValue > 0) {
+                const restLeft = Math.round(restGoal - Date.now()) / 1000
+                displayRestLeft(restLeft)
+                if (restLeft <= 0 && currentRepsValue >= 0) {
+                    // Decrease reps and reset everything back to before
+                    currentRepsValue--
+                    displayRestLeft(+00)
+                    clearInterval(timer)
+                    repsInput.value = currentRepsValue
+                    restTimerInputMinutes.value = saveRestMinutesValue
+                    restTimerInputSeconds.value = saveRestSecondsValue
+                    startTimer(inputTime, restInSeconds)
+                }
+            } else {
+                clearInterval(timer)
+                isRunning = false
+            }
         }
     }, 1000)
 }
@@ -93,8 +139,10 @@ const submitTimer = document
         isRunning = true
         const timeInSeconds =
             parseInt(secondsInput.value) + parseInt(minutesInput.value) * 60
-        console.log({ timeInSeconds })
-        startTimer(parseInt(timeInSeconds) + 1)
+        const restInSeconds =
+            parseInt(restTimerInputSeconds.value) +
+            parseInt(restTimerInputMinutes.value) * 60
+        startTimer(parseInt(timeInSeconds), parseInt(restInSeconds))
     })
 
 /**
@@ -102,20 +150,27 @@ const submitTimer = document
  */
 
 function displayTimeLeft(time) {
-    // const timerDiv = document.querySelector(".timer")
-    // const timerDisplay = document.querySelector("#timerDisplay")
-    // const secondsInput = document.querySelector(".secondsInput")
-    // const minutesInput = document.querySelector(".minutesInput")
-
     const minutesLeft = time / 60
     let secondsLeft = time % 60
 
+    if (isNaN(minutesInput.value)) {
+        minutesInput.value = savedMinutesValue || '00 '
+    }
+    if (isNaN(secondsInput.value)) {
+        secondsInput.value = savedSecondsValue || '00 '
+    }
+    if (isNaN(restTimerInputMinutes.value)) {
+        restTimerInputMinutes.value = saveRestMinutesValue || '00'
+    }
+    if (isNaN(restTimerInputSeconds.value)) {
+        restTimerInputSeconds.value = saveRestSecondsValue || '00'
+    }
+    if (isNaN(repsInput.value)) {
+        repsInput.value = savedRepsValue || '0'
+    }
     if (secondsLeft < 10) {
         secondsLeft = '0' + secondsLeft
     }
-
-    // console.log('minutes: ', Math.round(minutesLeft))
-    // console.log('seconds: ', Math.round(secondsLeft))
 
     if (minutesLeft < 10) {
         minutesInput.value = '0' + Math.floor(minutesLeft)
@@ -129,6 +184,23 @@ function displayTimeLeft(time) {
         secondsInput.value = Math.floor(secondsLeft)
     }
 }
+function displayRestLeft(time) {
+    const minutesLeft = time / 60
+    let secondsLeft = time % 60
+
+    if (minutesLeft < 10) {
+        restTimerInputMinutes.value = '0' + Math.floor(minutesLeft)
+    } else {
+        restTimerInputMinutes.value = Math.floor(minutesLeft)
+    }
+
+    if (secondsLeft < 10) {
+        restTimerInputSeconds.value = '0' + Math.floor(secondsLeft)
+    } else {
+        restTimerInputSeconds.value = Math.floor(secondsLeft)
+    }
+}
+
 /**
  * Listen for the incrementing buttons, and change input numbers as needed
  */
@@ -137,17 +209,12 @@ document.querySelectorAll('.incrementer').forEach(e => {
 })
 
 function incrementTime(e) {
-    // const secondsInput = document.querySelector(".secondsInput")
-    // const minutesInput = document.querySelector(".minutesInput")
-    console.log('ID:', e.target.id, minutesInput.value, secondsInput.value)
     switch (e.target.id) {
         case 'increment__seconds-up': {
             if (secondsInput.value < 9) {
-                console.log(secondsInput.value, 'is less than 10')
                 secondsInput.value = parseInt(secondsInput.value) + 1
                 secondsInput.value = '0' + secondsInput.value
             } else {
-                console.log('notlessthan10')
                 secondsInput.value = parseInt(secondsInput.value) + 1
             }
             break
@@ -188,18 +255,11 @@ function incrementTime(e) {
     }
 }
 
-// document
-//     .querySelector('.timerControl__button')
-//     .addEventListener('click', transformPlay)
-
 function transformPlay() {
-    console.log('transforming', isRunning)
     const svg_animation = document.querySelector('#animation')
     const pause =
         'M11,10 L18,13.74 18,22.28 11,26 M18,13.74 L26,18 26,18 18,22.28'
     const play = 'M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26'
-
-    // isRunning = !isRunning
     svg_animation.setAttribute('to', isRunning ? play : pause)
     svg_animation.setAttribute('from', isRunning ? play : pause)
     svg_animation.beginElement()
@@ -215,6 +275,7 @@ function changeThemeDown() {
     }
     changeTheme(themeList[currentTheme])
 }
+
 function changeThemeUp() {
     if (currentTheme == themeList.length - 1) {
         currentTheme = 0
