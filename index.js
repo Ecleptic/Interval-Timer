@@ -113,7 +113,7 @@ function startTimer(inputTime, restInSeconds) {
                 if (restLeft <= 0 && currentRepsValue >= 0) {
                     // Decrease reps and reset everything back to before
                     currentRepsValue--
-                    displayRestLeft(+00)
+                    displayRestLeft(0)
                     clearInterval(timer)
                     repsInput.value = currentRepsValue
                     restTimerInputMinutes.value = saveRestMinutesValue
@@ -268,7 +268,7 @@ document.querySelector('#themeUp').addEventListener('click', changeThemeUp)
 document.querySelector('#themeDown').addEventListener('click', changeThemeDown)
 
 function changeThemeDown() {
-    if (currentTheme == 0) {
+    if (currentTheme === 0) {
         currentTheme = themeList.length - 1
     } else {
         currentTheme--

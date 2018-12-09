@@ -49,6 +49,8 @@ html {
 }
 .minutesInput {
     width: 45%;
+    text-align: end;
+    justify-items: stretch;
 }
 .secondsInput {
     width: 45%;
@@ -91,11 +93,6 @@ html {
 
 .timerControl {
     grid-area: Play;
-}
-
-.minutesInput {
-    text-align: end;
-    justify-items: stretch;
 }
 
 .restTime__secondsInput {
