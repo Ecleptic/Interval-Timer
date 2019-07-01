@@ -31,6 +31,9 @@ html {
 	color: var(--accentColor);
 	font-family: 'Roboto', sans-serif;
 }
+body {
+	height: 100vh;
+}
 *,
 *:before,
 *:after {
