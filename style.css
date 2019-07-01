@@ -32,7 +32,7 @@ html {
 	font-family: 'Roboto', sans-serif;
 }
 body {
-	height: 100vh;
+	overflow: hidden;
 }
 *,
 *:before,
