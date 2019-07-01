@@ -70,7 +70,7 @@ html {
 		'Main    Main   Main'
 		'Reps    Reps   Reps'
 		'Reset   Reset  Reset';
-	overflow-x: hidden;
+	overflow: auto;
 }
 
 .themeSelector {
