@@ -31,9 +31,12 @@ html {
 	color: var(--accentColor);
 	font-family: 'Roboto', sans-serif;
 }
+html,
 body {
-	/* overflow: hidden; */
+	height: 100%;
+	overflow: hidden;
 }
+
 *,
 *:before,
 *:after {
