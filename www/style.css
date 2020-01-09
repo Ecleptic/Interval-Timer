@@ -1,0 +1,235 @@
+/* prettier-ignore */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100);
+
+:root {
+  --textLight: #e2e2e2;
+  --textDark: #131516;
+
+  --backgroundGrey: rgb(35, 35, 35);
+  --textWhite: #ffffff;
+
+  --darkPurple: #292d3e;
+  --lightPurple: #7e57c2;
+
+  --sLightAccent: #dfdcec;
+  --sLightMain: #268bd2;
+
+  --pinkWhiteAccent: #fe3562;
+  --pinkWhiteMain: #dfdcec;
+
+  --transparentColor: #ffffff00;
+
+  --mainColor: var(--darkPurple);
+  --accentColor: var(--lightPurple);
+  --textColor: var(--textLight);
+
+  --timerSize: 320px;
+  --incrementerSize: 50px;
+}
+
+html {
+  touch-action: manipulation;
+  box-sizing: border-box;
+  background: var(--mainColor);
+  color: var(--accentColor);
+  font-family: "Roboto", sans-serif;
+}
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  /* -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent; */
+  outline: none !important;
+}
+
+/* textarea:focus,
+input:focus {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-user-modify: read-write-plaintext-only;
+} */
+
+.timerInput {
+  background: none;
+  color: var(--textColor);
+  border: none;
+  font-size: 79px;
+  justify-content: center;
+  position: relative;
+  padding: 0;
+  z-index: 1;
+}
+.minutesInput {
+  width: 45%;
+  text-align: end;
+  justify-items: stretch;
+}
+.secondsInput {
+  width: 45%;
+}
+
+/* Block_Element-Modifier */
+.pageContainer {
+  display: grid;
+  justify-items: center; /* center on x|x */
+  align-items: center;
+  height: 100vh;
+  grid-template-columns: 1fr 70% 1fr;
+  grid-template-rows: 1fr 50% 1fr 1fr;
+  padding-bottom: 10vh;
+  grid-template-areas:
+    ".       Theme  Help"
+    "Main    Main   Main"
+    "Reps    Reps   Reps"
+    "Reset   Reset  Reset";
+  overflow: auto;
+}
+
+.themeSelector {
+  grid-area: Theme;
+}
+.helpSelector {
+  grid-area: Help;
+}
+
+.submitTimer-form {
+  grid-area: Time;
+  display: flex;
+  justify-content: center;
+  /*   width:50%; */
+}
+.incrementControls_button-left {
+  grid-area: Increment-Left;
+}
+.incrementControls_button-right {
+  grid-area: Increment-Right;
+}
+
+.timerControl {
+  grid-area: Play;
+}
+
+.restTime__secondsInput {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.timerContainer {
+  grid-area: Main;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-items: center; /* center on x|x */
+  align-items: center;
+  justify-content: space-around;
+  /*   justify-content: center; */
+
+  border: solid 10px var(--accentColor);
+  border-radius: 50%;
+  width: var(--timerSize);
+  height: var(--timerSize);
+}
+
+.incrementControls_container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.restTimerInput {
+  padding: 0;
+  color: var(--textColor);
+  background: none;
+  border: none;
+  font-size: 1rem;
+}
+.restTime {
+  grid-area: Rest;
+  display: flex;
+  text-align: center;
+  font-size: 25px;
+  justify-content: center;
+}
+
+.incrementer {
+  border: solid 1px var(--accentColor);
+  background: none;
+  /* font-size: 25px; */
+  fill: var(--textColor);
+  border-radius: 50%;
+  height: var(--incrementerSize);
+  width: var(--incrementerSize);
+  padding: 15px;
+  /* line-height: var(--incrementerSize); */
+  /* text-align: center; */
+}
+.incrementer > * {
+  pointer-events: none;
+}
+
+.timerControl__button {
+  width: 75px;
+  height: 75px;
+  /* background: var(--primaryColor); */
+  background: none;
+  border-radius: 50%;
+  border: solid 3px var(--accentColor);
+  fill: var(--accentColor);
+}
+
+.themeSwitcher {
+  grid-area: Theme;
+  width: calc(var(--timerSize) / 4);
+  display: flex;
+  align-items: center;
+  color: var(--accentColor);
+  padding: 10px 0px 10px 0px;
+}
+
+.changeTheme {
+  /*     transform: rotate(-45deg); */
+  fill: var(--accentColor);
+  background: none;
+  border: none;
+  padding: 0;
+}
+.reps {
+  grid-area: Reps;
+  height: 57px;
+  font-size: 48px;
+  display: flex;
+  align-items: baseline;
+}
+.repsInput {
+  padding: 0;
+  font-size: 48px;
+  background: none;
+  border: none;
+  color: var(--textColor);
+}
+.repsInput_Number {
+  text-align: right;
+  width: 50%;
+  /* font-size: 1rem; */
+}
+.repsInput_Times {
+  font-size: 30px;
+}
+.reset {
+  grid-area: Reset;
+}
+.reset > button {
+  color: var(--textColor);
+  font-size: 25px;
+  background: none;
+  border: none;
+}

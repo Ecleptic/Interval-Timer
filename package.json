@@ -1,14 +1,33 @@
 {
-	"name": "intervaltimer",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"start": "browser-sync start --directory --server --files '*.css, *.html, *.js' --https"
-	},
-	"author": "Ecleptic",
-	"license": "ISC",
-	"devDependencies": {
-		"browser-sync": "^2.26.7"
-	}
+  "name": "intervaltimer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "browser-sync start --directory --server --files 'www/*.css, www/*.html, www/*.js' --https --port 42069",
+    "build": "cordova build ios; cordova build android"
+  },
+  "author": "Ecleptic",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "cordova-plugin-whitelist": "^1.3.4"
+  },
+  "dependencies": {
+    "cordova-android": "^8.1.0",
+    "cordova-browser": "^6.0.0",
+    "cordova-ios": "^5.1.1",
+    "cordova-plugin-fastclick": "^1.0.0"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-fastclick": {}
+    },
+    "platforms": [
+      "browser",
+      "ios",
+      "android"
+    ]
+  }
 }

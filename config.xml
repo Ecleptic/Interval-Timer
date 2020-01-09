@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="com.camerongreens.timer" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Interval Timer</name>
+    <description>
+        Interval Timer
+    </description>
+    <author email="cameron@camerongreens.com" href="https://camerongreens.com">
+        Cameron Green
+    </author>
+    <preference name="Fullscreen" value="true" />
+    <content src="index.html" />
+    <preference name="Orientation" value="portrait" />
+    <access origin="*" />
+    <platform name="android">
+        <icon background="res/android/mipmap-hdpi/ic_launcher.png" density="hdpi" foreground="res/android/mipmap-hdpi/ic_launcher.png" />
+        <icon background="res/android/mipmap-ldpi/ic_launcher.png" density="ldpi" foreground="res/android/mipmap-ldpi/ic_launcher.png" />
+        <icon background="res/android/mipmap-mdpi/ic_launcher.png" density="mdpi" foreground="res/android/mipmap-mdpi/ic_launcher.png" />
+        <icon background="res/android/mipmap-xhdpi/ic_launcher.png" density="xhdpi" foreground="res/android/mipmap-xhdpi/ic_launcher.png" />
+        <icon background="res/android/mipmap-xxhdpi/ic_launcher.png" density="xxhdpi" foreground="res/android/mipmap-xxhdpi/ic_launcher.png" />
+        <icon background="res/android/mipmap-xxxhdpi/ic_launcher.png" density="xxxhdpi" foreground="res/android/mipmap-xxxhdpi/ic_launcher.png" />
+    </platform>
+    <platform name="ios">
+        <!-- https://apetools.webprofusion.com/#/tools/imagegorilla -->
+        <preference name="BackupWebStorage" value="local" />
+        <preference name="DisallowOverscroll" value="true" />
+        <!-- cordova plugin add cordova-plugin-statusbar -->
+        <!-- <preference name="StatusBarOverlaysWebView" value="false" /> -->
+        <!-- <preference name="StatusBarBackgroundColor" value="#353334" /> -->
+
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-20x20@1x.png" width="20" height="20" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-20x20@2x.png" width="40" height="40" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-20x20@3x.png" width="60" height="60" />
+        <!-- iOS 8.0+ -->
+        <!-- iPhone 6 Plus  -->
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-60x60@2x.png" width="120" height="120" />
+        <!-- iOS 7.0+ -->
+        <!-- iPhone / iPod Touch  -->
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-60x60@2x.png" width="120" height="120" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-60x60@3x.png" width="180" height="180" />
+        <!-- iPad -->
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-76x76@1x.png" width="76" height="76" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-76x76@2x.png" width="152" height="152" />
+        <!-- Spotlight Icon -->
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-40x40@1x.png" width="40" height="40" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-40x40@2x.png" width="80" height="80" />
+        <!-- iOS 6.1 -->
+        <!-- iPhone / iPod Touch -->
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-57x57@1x.png" width="57" height="57" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-57x57@2x.png" width="114" height="114" />
+        <!-- iPad -->
+        <!-- <icon src="res/ios/AppIcon.appiconset/Icon-App-72.png" width="72" height="72" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-72@2x.png" width="144" height="144" /> -->
+        <!-- iPad Pro -->
+        <!-- <icon src="res/ios/AppIcon.appiconset/Icon-App-167.png" width="167" height="167" /> -->
+        <!-- iPhone Spotlight and Settings Icon -->
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-29x29@1x.png" width="29" height="29" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-29x29@2x.png" width="58" height="58" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-29x29@3x.png" width="87" height="87" />
+        <!-- iPad Spotlight and Settings Icon -->
+        <!-- <icon src="res/ios/AppIcon.appiconset/Icon-App-50.png" width="50" height="50" /> -->
+        <!-- <icon src="res/ios/AppIcon.appiconset/Icon-App-50@2x.png" width="100" height="100" /> -->
+        <!-- iPad Pro -->
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" width="167" height="167" />
+
+
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-50x50@1x.png" width="50" height="50" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-50x50@2x.png" width="100" height="100" />
+
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-72x72@1x.png" width="72" height="72" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-72x72@2x.png" width="144" height="144" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-72x72@3x.png" width="216" height="216" />
+
+        <icon src="res/ios/AppIcon.appiconset/ItunesArtwork@2x.png" width="1024" height="1024" />
+
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-24x24@2x.png" width="48" height="48" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-55x55@1x.png" width="55" height="55" />
+
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-44x44@2x.png" width="88" height="88" />
+
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-86x86@2x.png" width="172" height="172" />
+        <icon src="res/ios/AppIcon.appiconset/Icon-App-98x98@2x.png" width="196" height="196" />
+
+    </platform>
+</widget>
