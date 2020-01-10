@@ -8,9 +8,13 @@
   --backgroundGrey: rgb(35, 35, 35);
   --textWhite: #ffffff;
 
-  --michaelText: #000033;
+  --michaelText: #ffffff;
   --michaelAccent: #3366cc;
   --michaelBackground: #333333;
+
+  --michaelTextImproved: #ffffff;
+  --michaelAccentImproved: #1459e4;
+  --michaelBackgroundImproved: #333333;
 
   --darkPurple: #292d3e;
   --lightPurple: #7e57c2;

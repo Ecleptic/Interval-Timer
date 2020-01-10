@@ -41,6 +41,11 @@ const themeList = [
   { main: "pinkWhiteMain", accent: "pinkWhiteAccent", text: "textDark" },
   { main: "backgroundGrey", accent: "textWhite", text: "textWhite" },
   {
+    main: "michaelBackgroundImproved",
+    accent: "michaelAccentImproved",
+    text: "michaelTextImproved"
+  },
+  {
     main: "michaelBackground",
     accent: "michaelAccent",
     text: "michaelText"
