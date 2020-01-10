@@ -39,7 +39,12 @@ const themeList = [
     text: "textLight"
   },
   { main: "pinkWhiteMain", accent: "pinkWhiteAccent", text: "textDark" },
-  { main: "backgroundGrey", accent: "textWhite", text: "textWhite" }
+  { main: "backgroundGrey", accent: "textWhite", text: "textWhite" },
+  {
+    main: "michaelBackground",
+    accent: "michaelAccent",
+    text: "michaelText"
+  }
 ];
 
 const minutesInput = document.querySelector("#timerInputMinutes");
